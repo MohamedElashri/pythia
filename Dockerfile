@@ -53,8 +53,8 @@ RUN mkdir /code && \
       --with-gzip \
       --with-lhapdf6 \
       --with-python-bin=/usr/local/bin \
-      --with-python-lib=/usr/local/lib/python${PYTHON_MINOR_VERSION} \
-      --with-python-include=/usr/local/include/python${PYTHON_MINOR_VERSION} && \
+      --with-python-lib=/usr/local/lib/python${PYTHON_VERSION} \
+      --with-python-include=/usr/local/include/python${PYTHON_VERSION} && \
     make -j$(($(nproc) - 1)) && \
     make install && \
     rm -rf /code  
