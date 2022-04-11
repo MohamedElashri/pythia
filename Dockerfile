@@ -7,7 +7,7 @@ RUN apt-get -qq -y update && \
     apt-get -qq -y install \
         gcc \
         g++ \
-        #zlibc \
+        zlibc \
         zlib1g-dev \
         libbz2-dev \
         wget \
@@ -15,7 +15,6 @@ RUN apt-get -qq -y update && \
         cmake \
         rsync \
         python3-dev \
-        python3.8-dev \
         sudo && \
     apt-get -y autoclean && \
     apt-get -y autoremove && \
@@ -38,14 +37,14 @@ RUN mkdir /code && \
     rm -rf /code
     
 # Install PYTHIA
-ARG PYTHIA_VERSION=pythia8307
+ARG PYTHIA_VERSION=8303
 RUN mkdir /code && \
     cd /code && \
-    wget https://pythia.org/download/pythia83/${PYTHIA_VERSION}.tgz && \
-    tar xvfz ${PYTHIA_VERSION}.tgz && \
-    cd ${PYTHIA_VERSION} && \
+    wget https://pythia.org/download/pythia83/pythia${PYTHIA_VERSION}.tgz && \
+    tar xvfz pythia${PYTHIA_VERSION}.tgz && \
+    cd pythia${PYTHIA_VERSION} && \
     ./configure --help && \
-    export PYTHON_MINOR_VERSION=${PYTHON_VERSION} && \
+    export PYTHON_MINOR_VERSION=${PYTHON_VERSION::-2} && \
     ./configure \
       --prefix=/usr/local \
       --arch=Linux \
@@ -53,12 +52,11 @@ RUN mkdir /code && \
       --with-gzip \
       --with-lhapdf6 \
       --with-python-bin=/usr/local/bin \
-      --with-python-lib=/usr/local/lib/python${PYTHON_VERSION} \
-      --with-python-include=/usr/local/include/python${PYTHON_VERSION} && \
+      --with-python-lib=/usr/local/lib/python${PYTHON_MINOR_VERSION} \
+      --with-python-include=/usr/local/include/python${PYTHON_MINOR_VERSION} && \
     make -j$(($(nproc) - 1)) && \
     make install && \
-    rm -rf /code  
-    
+    rm -rf /code    
     
 FROM base
 RUN apt-get -qq -y update && \
