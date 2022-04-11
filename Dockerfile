@@ -15,7 +15,7 @@ RUN apt-get -qq -y update && \
         cmake \
         rsync \
         python3-dev \
-        python3.9-dev
+        python3.9-dev \
         sudo && \
     apt-get -y autoclean && \
     apt-get -y autoremove && \
