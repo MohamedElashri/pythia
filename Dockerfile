@@ -45,7 +45,7 @@ RUN mkdir /code && \
     tar xvfz ${PYTHIA_VERSION}.tgz && \
     cd ${PYTHIA_VERSION} && \
     ./configure --help && \
-    export PYTHON_MINOR_VERSION=${PYTHON_VERSION::-2} && \
+    export PYTHON_MINOR_VERSION=${PYTHON_VERSION} && \
     ./configure \
       --prefix=/usr/local \
       --arch=Linux \
