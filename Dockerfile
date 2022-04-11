@@ -36,7 +36,7 @@ RUN mkdir /code && \
     rm -rf /code
     
 # Install PYTHIA
-ARG PYTHIA_VERSION=8303
+ARG PYTHIA_VERSION=8307
 RUN mkdir /code && \
     cd /code && \
     wget https://pythia.org/download/pythia83/pythia${PYTHIA_VERSION}.tgz && \
