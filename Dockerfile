@@ -7,7 +7,6 @@ RUN apt-get -qq -y update && \
     apt-get -qq -y install \
         gcc \
         g++ \
-        zlibc \
         zlib1g-dev \
         libbz2-dev \
         wget \
