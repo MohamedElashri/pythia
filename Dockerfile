@@ -1,4 +1,4 @@
-FROM python:3.8.13 as base
+FROM python:3.9 as base
 
 SHELL [ "/bin/bash", "-c" ]
 
@@ -15,6 +15,7 @@ RUN apt-get -qq -y update && \
         cmake \
         rsync \
         python3-dev \
+        python3.9-dev
         sudo && \
     apt-get -y autoclean && \
     apt-get -y autoremove && \
