@@ -41,7 +41,7 @@ ARG PYTHIA_VERSION=pythia8307
 RUN mkdir /code && \
     cd /code && \
     wget https://pythia.org/download/pythia83/${PYTHIA_VERSION}.tgz && \
-    tar xvfz pythia${PYTHIA_VERSION}.tgz && \
+    tar xvfz ${PYTHIA_VERSION}.tgz && \
     cd pythia${PYTHIA_VERSION} && \
     ./configure --help && \
     export PYTHON_MINOR_VERSION=${PYTHON_VERSION::-2} && \
